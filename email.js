@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialize EmailJS with your Public Key
     // Find this in your EmailJS account under Account > API Keys
     emailjs.init({
-        publicKey: '1VaS0kVeLjg7B0Xzo',
+        publicKey: '############',
     });
 
     // Add an event listener to the form's submit button
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // --- Your EmailJS Credentials ---
         // Find these in your EmailJS account
-        const serviceID = 'service_4ryc02q';
+        const serviceID = 'service_4r#####';
         const templateID = 'template_3azhfkt';
 
         // Get the submit button to provide user feedback

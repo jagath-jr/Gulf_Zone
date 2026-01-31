@@ -74,143 +74,285 @@ document.addEventListener("DOMContentLoaded", () => {
     /* ==========================================================================
        4. HOME PAGE SERVICES (Reads "homeServices" from JSON)
        ========================================================================== */
-    function initHomeServices() {
-        const track = document.querySelector('#services-track');
-        // Stop if we are not on the home page (or wherever the carousel is)
-        if (!track) return;
+function initHomeServices() {
+    const track = document.querySelector('#services-track');
+    // Stop if we are not on the home page (or wherever the carousel is)
+    if (!track) return;
 
-        const dotsContainer = document.querySelector('.srv-carousel-dots');
-        const nextBtn = document.querySelector('.srv-carousel-btn.next');
-        const prevBtn = document.querySelector('.srv-carousel-btn.prev');
+    const dotsContainer = document.querySelector('.srv-carousel-dots');
+    const nextBtn = document.querySelector('.srv-carousel-btn.next');
+    const prevBtn = document.querySelector('.srv-carousel-btn.prev');
 
-        let servicesData = [];
-        let currentIndex = 0;
-        let sliderInterval = null;
+    let servicesData = [];
+    let currentIndex = 0;
+    let sliderInterval = null;
+    
+    // Touch/swipe variables
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let isDragging = false;
+    let startPos = 0;
+    let currentTranslate = 0;
+    let prevTranslate = 0;
+    let animationID = null;
 
-        // Fetch Data
-        fetch('services-data.json')
-            .then(res => res.json())
-            .then(data => {
-                // IMPORTANT: Access the "homeServices" array
-                if (data.homeServices) {
-                    servicesData = data.homeServices;
-                    renderHomeCards();
-                    updateCarouselLayout();
-                    setupCarouselEvents();
-                } else {
-                    console.error("JSON is missing 'homeServices' key.");
-                }
-            })
-            .catch(err => console.error("Home Services Load Error:", err));
-
-        function renderHomeCards() {
-            track.innerHTML = ''; 
-            if(dotsContainer) dotsContainer.innerHTML = '';
-
-            servicesData.forEach((service, index) => {
-                const card = document.createElement('article');
-                card.className = 'srv-card'; 
-                card.innerHTML = `
-                    <div class="srv-icon-box">
-                        <i class="${service.icon || 'fa-solid fa-layer-group'}"></i>
-                    </div>
-                    <h3 class="srv-card-title">${service.title}</h3>
-                    <p class="srv-card-desc">${service.homePageDescription}</p>
-                    <a href="services.html" class="srv-btn">
-                        Read More <i class="fa-solid fa-arrow-right" style="margin-left:5px; font-size:12px;"></i>
-                    </a>
-                `;
-                track.appendChild(card);
-
-                if (dotsContainer) {
-                    const dot = document.createElement('span');
-                    dot.className = `srv-dot ${index === 0 ? 'active' : ''}`;
-                    dot.dataset.index = index;
-                    dotsContainer.appendChild(dot);
-                }
-            });
-        }
-
-        function updateCarouselLayout() {
-            const isMobile = window.innerWidth <= 992;
-            
-            if (!isMobile) {
-                // Desktop Grid
-                track.style.display = 'grid';
-                track.style.gridTemplateColumns = 'repeat(auto-fit, minmax(300px, 1fr))';
-                track.style.gap = '20px';
-                track.style.transform = 'none';
-                
-                // Desktop Animation
-                if (hasGSAP) {
-                    gsap.from("#services-track .srv-card", {
-                        scrollTrigger: {
-                            trigger: "#services-track",
-                            start: "top 80%",
-                        },
-                        y: 50,
-                        opacity: 0,
-                        duration: 0.8,
-                        stagger: 0.1,
-                        ease: "power2.out"
-                    });
-                }
-            } else {
-                // Mobile Carousel
-                track.style.display = 'flex';
-                track.style.gap = '0';
-                setupMobileCarousel();
-            }
-        }
-
-        function setupMobileCarousel() {
-            const cards = document.querySelectorAll('#services-track .srv-card');
-            if(cards.length === 0) return;
-            
-            const wrapper = document.querySelector('.srv-carousel-wrapper');
-            const width = wrapper.offsetWidth;
-            
-            cards.forEach(card => {
-                card.style.minWidth = `${width}px`;
-                card.style.marginRight = '0px'; 
-            });
-            startAutoplay();
-        }
-
-        function startAutoplay() {
-            if(sliderInterval) clearInterval(sliderInterval);
-            sliderInterval = setInterval(() => moveCarousel(1), 3000);
-        }
-
-        function moveCarousel(direction) {
-            const cards = document.querySelectorAll('#services-track .srv-card');
-            if(cards.length === 0) return;
-
-            currentIndex += direction;
-            if (currentIndex >= cards.length) currentIndex = 0;
-            if (currentIndex < 0) currentIndex = cards.length - 1;
-
-            const wrapper = document.querySelector('.srv-carousel-wrapper');
-            const width = wrapper.offsetWidth;
-            
-            track.style.transition = 'transform 0.5s ease';
-            track.style.transform = `translateX(-${currentIndex * width}px)`;
-
-            document.querySelectorAll('.srv-dot').forEach(d => d.classList.remove('active'));
-            const activeDot = document.querySelector(`.srv-dot[data-index="${currentIndex}"]`);
-            if(activeDot) activeDot.classList.add('active');
-        }
-
-        function setupCarouselEvents() {
-            if(nextBtn) nextBtn.onclick = () => { moveCarousel(1); startAutoplay(); };
-            if(prevBtn) prevBtn.onclick = () => { moveCarousel(-1); startAutoplay(); };
-            
-            window.addEventListener('resize', () => {
+    // Fetch Data
+    fetch('services-data.json')
+        .then(res => res.json())
+        .then(data => {
+            // IMPORTANT: Access the "homeServices" array
+            if (data.homeServices) {
+                servicesData = data.homeServices;
+                renderHomeCards();
                 updateCarouselLayout();
-                currentIndex = 0;
-            });
+                setupCarouselEvents();
+            } else {
+                console.error("JSON is missing 'homeServices' key.");
+            }
+        })
+        .catch(err => console.error("Home Services Load Error:", err));
+
+    function renderHomeCards() {
+        track.innerHTML = ''; 
+        if(dotsContainer) dotsContainer.innerHTML = '';
+
+        servicesData.forEach((service, index) => {
+            const card = document.createElement('article');
+            card.className = 'srv-card'; 
+            card.innerHTML = `
+                <div class="srv-icon-box">
+                    <i class="${service.icon || 'fa-solid fa-layer-group'}"></i>
+                </div>
+                <h3 class="srv-card-title">${service.title}</h3>
+                <p class="srv-card-desc">${service.homePageDescription}</p>
+                <a href="services.html" class="srv-btn">
+                    Read More <i class="fa-solid fa-arrow-right" style="margin-left:5px; font-size:12px;"></i>
+                </a>
+            `;
+            track.appendChild(card);
+
+            if (dotsContainer) {
+                const dot = document.createElement('span');
+                dot.className = `srv-dot ${index === 0 ? 'active' : ''}`;
+                dot.dataset.index = index;
+                dotsContainer.appendChild(dot);
+            }
+        });
+    }
+
+    function updateCarouselLayout() {
+        const isMobile = window.innerWidth <= 992;
+        
+        if (!isMobile) {
+            // Desktop Grid
+            track.style.display = 'grid';
+            track.style.gridTemplateColumns = 'repeat(auto-fit, minmax(300px, 1fr))';
+            track.style.gap = '20px';
+            track.style.transform = 'none';
+            track.style.transition = 'none';
+            
+            // Remove touch event listeners for desktop
+            track.removeEventListener('touchstart', handleTouchStart);
+            track.removeEventListener('touchmove', handleTouchMove);
+            track.removeEventListener('touchend', handleTouchEnd);
+            
+            // Desktop Animation
+            if (hasGSAP) {
+                gsap.from("#services-track .srv-card", {
+                    scrollTrigger: {
+                        trigger: "#services-track",
+                        start: "top 80%",
+                    },
+                    y: 50,
+                    opacity: 0,
+                    duration: 0.8,
+                    stagger: 0.1,
+                    ease: "power2.out"
+                });
+            }
+        } else {
+            // Mobile Carousel
+            track.style.display = 'flex';
+            track.style.gap = '0';
+            track.style.transition = 'transform 0.5s ease';
+            setupMobileCarousel();
         }
     }
+
+    function setupMobileCarousel() {
+        const cards = document.querySelectorAll('#services-track .srv-card');
+        if(cards.length === 0) return;
+        
+        const wrapper = document.querySelector('.srv-carousel-wrapper');
+        const width = wrapper.offsetWidth;
+        
+        cards.forEach(card => {
+            card.style.minWidth = `${width}px`;
+            card.style.marginRight = '0px'; 
+        });
+        
+        // Reset position and transform
+        track.style.transform = `translateX(-${currentIndex * width}px)`;
+        currentTranslate = -currentIndex * width;
+        prevTranslate = currentTranslate;
+        
+        // Add touch event listeners
+        track.addEventListener('touchstart', handleTouchStart);
+        track.addEventListener('touchmove', handleTouchMove, { passive: false });
+        track.addEventListener('touchend', handleTouchEnd);
+        
+        // Mouse events for desktop testing
+        track.addEventListener('mousedown', handleTouchStart);
+        track.addEventListener('mousemove', handleTouchMove);
+        track.addEventListener('mouseup', handleTouchEnd);
+        track.addEventListener('mouseleave', handleTouchEnd);
+        
+        startAutoplay();
+    }
+
+    // Touch/Swipe Handlers
+    function handleTouchStart(event) {
+        if (sliderInterval) {
+            clearInterval(sliderInterval);
+            sliderInterval = null;
+        }
+        
+        if (event.type === 'touchstart') {
+            touchStartX = event.touches[0].clientX;
+        } else {
+            touchStartX = event.clientX;
+            track.style.cursor = 'grabbing';
+        }
+        
+        startPos = getPositionX(event);
+        isDragging = true;
+        
+        // Cancel any ongoing animation
+        if (animationID) {
+            cancelAnimationFrame(animationID);
+        }
+    }
+
+    function handleTouchMove(event) {
+        if (!isDragging) return;
+        
+        event.preventDefault();
+        
+        const currentPosition = getPositionX(event);
+        currentTranslate = prevTranslate + currentPosition - startPos;
+        
+        // Apply the translation
+        track.style.transform = `translateX(${currentTranslate}px)`;
+        track.style.transition = 'none';
+    }
+
+    function handleTouchEnd() {
+        isDragging = false;
+        track.style.cursor = 'grab';
+        
+        const wrapper = document.querySelector('.srv-carousel-wrapper');
+        const width = wrapper.offsetWidth;
+        const movedBy = currentTranslate - prevTranslate;
+        
+        // Determine if it's a swipe (threshold: 30% of card width)
+        if (Math.abs(movedBy) > width * 0.3) {
+            if (movedBy > 0) {
+                // Swiped right (previous)
+                currentIndex = Math.max(currentIndex - 1, 0);
+            } else {
+                // Swiped left (next)
+                currentIndex = Math.min(currentIndex + 1, servicesData.length - 1);
+            }
+        }
+        
+        // Animate to the correct position
+        currentTranslate = -currentIndex * width;
+        prevTranslate = currentTranslate;
+        
+        track.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        track.style.transform = `translateX(${currentTranslate}px)`;
+        
+        // Update dots
+        updateDots();
+        
+        // Restart autoplay
+        startAutoplay();
+    }
+
+    function getPositionX(event) {
+        return event.type.includes('mouse') ? event.clientX : event.touches[0].clientX;
+    }
+
+    function startAutoplay() {
+        if(sliderInterval) clearInterval(sliderInterval);
+        sliderInterval = setInterval(() => moveCarousel(1), 3000);
+    }
+
+    function moveCarousel(direction) {
+        const cards = document.querySelectorAll('#services-track .srv-card');
+        if(cards.length === 0) return;
+
+        currentIndex += direction;
+        if (currentIndex >= cards.length) currentIndex = 0;
+        if (currentIndex < 0) currentIndex = cards.length - 1;
+
+        const wrapper = document.querySelector('.srv-carousel-wrapper');
+        const width = wrapper.offsetWidth;
+        
+        track.style.transition = 'transform 0.5s ease';
+        track.style.transform = `translateX(-${currentIndex * width}px)`;
+        
+        // Update touch variables
+        currentTranslate = -currentIndex * width;
+        prevTranslate = currentTranslate;
+
+        updateDots();
+    }
+
+    function updateDots() {
+        document.querySelectorAll('.srv-dot').forEach(d => d.classList.remove('active'));
+        const activeDot = document.querySelector(`.srv-dot[data-index="${currentIndex}"]`);
+        if(activeDot) activeDot.classList.add('active');
+    }
+
+    function setupCarouselEvents() {
+        if(nextBtn) nextBtn.onclick = () => { 
+            moveCarousel(1); 
+            if (sliderInterval) {
+                clearInterval(sliderInterval);
+                startAutoplay();
+            }
+        };
+        
+        if(prevBtn) prevBtn.onclick = () => { 
+            moveCarousel(-1); 
+            if (sliderInterval) {
+                clearInterval(sliderInterval);
+                startAutoplay();
+            }
+        };
+        
+        // Dot navigation
+        if(dotsContainer) {
+            dotsContainer.addEventListener('click', (e) => {
+                if(e.target.classList.contains('srv-dot')) {
+                    const index = parseInt(e.target.dataset.index);
+                    currentIndex = index;
+                    moveCarousel(0); // Move to specific index
+                    if (sliderInterval) {
+                        clearInterval(sliderInterval);
+                        startAutoplay();
+                    }
+                }
+            });
+        }
+        
+        window.addEventListener('resize', () => {
+            updateCarouselLayout();
+            currentIndex = 0;
+        });
+    }
+}
 
     /* ==========================================================================
        5. SERVICES PAGE CONTENT (Reads "servicesPage" from JSON)
