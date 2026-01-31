@@ -42,61 +42,61 @@
       "id": "hvac",
       "title": "HVAC",
       "description": "Supply of high-quality heating, ventilation, and air conditioning systems ensuring efficient cooling, ventilation, and indoor comfort.",
-      "image": "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=600&auto=format&fit=crop"
+      "image": "Our service images/HVAC.webp"
     },
     {
       "id": "electrical",
       "title": "Electrical",
       "description": "Comprehensive range of electrical materials and accessories supporting safe, reliable, and efficient power distribution.",
-      "image": "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=600&auto=format&fit=crop"
+      "image": "Our service images/Electrical.webp"
     },
     {
       "id": "sanitary-wares",
       "title": "Sanitary Wares",
       "description": "Premium sanitary ware products designed for durability, hygiene, and modern aesthetics in residential and commercial spaces.",
-      "image": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=600&auto=format&fit=crop"
+      "image": "Our service images/Sanitary Wares.webp"
     },
     {
       "id": "plumbing-materials",
       "title": "Plumbing Materials",
       "description": "Complete plumbing solutions including pipes, fittings, valves, and accessories for reliable water supply and drainage systems.",
-      "image": "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?q=80&w=600&auto=format&fit=crop"
+      "image": "Our service images/Plumbing Materials.webp"
     },
     {
       "id": "building-materials",
       "title": "Building Materials",
       "description": "Wide selection of quality building materials supporting strong, safe, and long-lasting construction projects.",
-      "image": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=600&auto=format&fit=crop"
+      "image": "Our service images/Building Materials.webp"
     },
     {
       "id": "tools-machineries",
       "title": "Tools and Machineries",
       "description": "Professional-grade tools and machinery for construction, maintenance, and industrial applications.",
-      "image": "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?q=80&w=600&auto=format&fit=crop"
+      "image": "Our service images/Tools and Machineries.webp"
     },
     {
       "id": "hardware",
       "title": "Hardware",
       "description": "Reliable hardware products including fasteners, fixtures, and accessories for construction, fabrication, and maintenance.",
-      "image": "https://images.unsplash.com/photo-1581783898377-1c85bf937427?q=80&w=600&auto=format&fit=crop"
+      "image": "Our service images/Hardware.webp"
     },
     {
       "id": "pool-chemicals",
       "title": "Swimming Pool Chemicals",
       "description": "Essential pool chemicals and accessories to maintain clean, safe, and well-balanced swimming pool water.",
-      "image": "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=80&w=600&auto=format&fit=crop"
+      "image": "Our service images/Swimming Pool Chemicals & Accessories.webp"
     },
     {
       "id": "water-cleaning",
       "title": "Water Cleaning Chemicals",
       "description": "Effective water treatment chemicals designed to improve water quality for domestic, commercial, and industrial use.",
-      "image": "https://images.unsplash.com/photo-1562259949-e8e7689d7828?q=80&w=600&auto=format&fit=crop"
+      "image": "Our service images/Water Cleaning Chemicals.webp"
     },
     {
       "id": "sports-equipments",
       "title": "Sports Equipments",
       "description": "Durable and high-performance sports equipment suitable for schools, clubs, fitness centers, and recreational facilities.",
-      "image": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=600&auto=format&fit=crop"
+      "image": "Our service images/Sports Equipments.webp"
     }
   ]
 }

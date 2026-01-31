@@ -26,7 +26,7 @@
     position: relative;
     width: 100%;
     height: 350px;
-    background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=1469&auto=format&fit=crop'); /* Placeholder Handshake Image */
+    background-image: url('images/contactUsHero.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -38,7 +38,7 @@
 .cup-hero-overlay {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(255, 255, 255, 0.3); /* Light overlay as per image */
+    /* background: rgba(255, 255, 255, 0.3); */
 }
 
 .cup-hero-content {
@@ -99,7 +99,7 @@
 }
 
 .cup-contact-details .cup-detail-row {
-    font-size: 1.4rem; /* Matching image font size */
+    font-size: 1.4rem;
     color: #000;
     margin-bottom: 15px;
 }
@@ -194,46 +194,35 @@
     box-shadow: 0 5px 15px rgba(185, 28, 56, 0.4);
 }
 
-/* --- Maps Section --- */
+/* --- Maps Section (UPDATED) --- */
 .cup-map-section {
     padding-top: 0;
     padding-bottom: 80px;
 }
 
-.cup-map-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-}
-
-.cup-map-item {
-    position: relative;
+/* New Single Full Map Container */
+.cup-map-full {
+    width: 100%;
+    height: 450px;
     border-radius: 4px;
     overflow: hidden;
-    height: 400px;
+    position: relative;
+    box-shadow: var(--cup-shadow);
+    background: #e0e0e0; /* Loading placeholder color */
 }
 
-.cup-map-item img {
+.cup-map-full iframe {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    border: none;
+    display: block;
+    /* Optional: Keep the grayscale effect until hover */
     filter: grayscale(20%);
     transition: filter 0.3s;
 }
 
-.cup-map-item:hover img {
+.cup-map-full:hover iframe {
     filter: grayscale(0%);
-}
-
-.cup-map-label {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    background: rgba(255,255,255,0.8);
-    padding: 5px 15px;
-    border-radius: 4px;
-    font-weight: bold;
-    color: #333;
 }
 
 /* --- Responsive Media Queries --- */
@@ -250,9 +239,6 @@
         flex-direction: column;
         gap: 40px;
     }
-    .cup-map-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
 }
 
 /* Mobile Small */
@@ -267,10 +253,9 @@
     .cup-form-card {
         padding: 25px;
     }
-    .cup-map-grid {
-        grid-template-columns: 1fr;
-    }
-    .cup-map-item {
+    
+    /* Adjust map height for small screens */
+    .cup-map-full {
         height: 300px;
     }
 }
