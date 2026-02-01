@@ -71,6 +71,11 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+
+
+
+
+
 // Wait for DOM and GSAP to be ready
 document.addEventListener("DOMContentLoaded", () => {
     // Early return if GSAP isn't available
