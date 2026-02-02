@@ -1,39 +1,39 @@
 {
   "homeServices": [
     {
-      "id": "testing",
-      "title": "Testing & Diagnostic",
-      "homePageDescription": "Advanced testing solutions to ensure safety and reliability of electrical assets.",
+      "id": "HVAC",
+      "title": "HVAC",
+      "homePageDescription": "Efficient heating, ventilation, and air conditioning solutions for comfortable indoor environments.",
       "icon": "fa-solid fa-box-open"
     },
     {
-      "id": "monitoring",
-      "title": "Condition Monitoring",
-      "homePageDescription": "Real-time monitoring systems to track performance and prevent failures.",
-      "icon": "fa-solid fa-microchip"
+      "id": "Electrical",
+      "title": "Electrical",
+      "homePageDescription": "Reliable electrical materials and accessories for safe and efficient power systems.",
+      "icon": "fa-solid fa-bolt"
     },
     {
-      "id": "maintenance",
-      "title": "Asset Maintenance",
-      "homePageDescription": "Comprehensive maintenance services to extend the lifecycle of your equipment.",
+      "id": "Sanitary Wares",
+      "title": "Sanitary Wares",
+      "homePageDescription": "Modern, durable sanitary solutions designed for hygiene and everyday comfort.",
       "icon": "fa-solid fa-gears"
     },
     {
-      "id": "consulting",
-      "title": "Expert Consulting",
-      "homePageDescription": "Professional advice on optimizing your electrical infrastructure.",
+      "id": "Plumbing Materials",
+      "title": "Plumbing Materials",
+      "homePageDescription": "Complete range of pipes, fittings, and valves for dependable water supply and drainage.",
       "icon": "fa-solid fa-clipboard-check"
     },
     {
-      "id": "safety",
-      "title": "Safety Audits",
-      "homePageDescription": "Detailed inspections to ensure compliance with all safety regulations.",
+      "id": "Building Materials",
+      "title": "Building Materials",
+      "homePageDescription": "Quality construction materials ensuring strength, safety, and long-lasting performance.",
       "icon": "fa-solid fa-shield-halved"
     },
     {
-      "id": "training",
-      "title": "Technical Training",
-      "homePageDescription": "Empowering your team with the knowledge to handle complex systems.",
+      "id": "Tools & Machineries",
+      "title": "Tools & Machineries",
+      "homePageDescription": "Professional tools and machinery for construction, maintenance, and industrial work.",
       "icon": "fa-solid fa-chalkboard-user"
     }
   ],
