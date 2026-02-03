@@ -2,43 +2,36 @@
 #mep-hero-section {
     position: relative;
     width: 100%;
-    /* Adjust height based on your header height. 
-       min-height: 80vh is standard for hero sections */
     min-height: 85vh; 
     display: flex;
     align-items: center;
-    font-family: 'Inter', sans-serif; /* Or your site's main font */
+    font-family: 'Inter', sans-serif;
     overflow: hidden;
     color: #ffffff;
 }
 
-/* Background Image Handling */
 #mep-hero-section .mep-hero__bg {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    /* Placeholder image used - Replace url with your actual image path */
     background-image: url('images/Index_heroSection.webp'); 
     background-size: cover;
     background-position: center;
     z-index: 1;
 }
 
-/* Dark Overlay */
 #mep-hero-section .mep-hero__overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    /* Adds a dark tint so white text is readable against the busy image */
     background: rgba(0, 0, 0, 0.45);
     z-index: 2;
 }
 
-/* Container for alignment */
 #mep-hero-section .mep-hero__container {
     position: relative;
     z-index: 3;
@@ -49,12 +42,11 @@
 }
 
 #mep-hero-section .mep-hero__content {
-    max-width: 800px; /* Restricts width for better readability */
+    max-width: 800px;
 }
 
-/* Typography */
 #mep-hero-section .mep-hero__title {
-    font-size: 3rem; /* 48px */
+    font-size: 3rem;
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 24px;
@@ -62,7 +54,7 @@
 }
 
 #mep-hero-section .mep-hero__description {
-    font-size: 1.25rem; /* 20px */
+    font-size: 1.25rem;
     line-height: 1.6;
     margin-bottom: 40px;
     font-weight: 400;
@@ -70,7 +62,6 @@
     max-width: 700px;
 }
 
-/* Button Styling */
 #mep-hero-section .mep-hero__btn {
     display: inline-block;
     text-decoration: none;
@@ -79,7 +70,6 @@
     font-size: 1.125rem;
     padding: 16px 32px;
     border-radius: 8px;
-    /* The Gradient from the image (Red/Pink to Purple/Blue) */
     background: linear-gradient(180deg, #C2185B 0%, #512DA8 100%);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -91,28 +81,24 @@
 }
 
 /* --- Responsive Design --- */
-
-/* Tablet (max-width: 1024px) */
 @media (max-width: 1024px) {
     #mep-hero-section .mep-hero__title {
         font-size: 2.5rem;
     }
 }
 
-/* Mobile (max-width: 768px) */
 @media (max-width: 768px) {
     #mep-hero-section {
-        min-height: 70vh; /* Shorter hero on mobile */
-        text-align: left; /* Center text on mobile */
+        min-height: 70vh;
+        text-align: left;
     }
 
     #mep-hero-section .mep-hero__bg {
-        /* Ensure focus is on the workers on mobile */
         background-position: 60% center; 
     }
 
     #mep-hero-section .desktop-break {
-        display: none; /* Hide manual line breaks on mobile */
+        display: none;
     }
 
     #mep-hero-section .mep-hero__content {
@@ -129,7 +115,7 @@
     }
     
     #mep-hero-section .mep-hero__btn {
-        width: 50%; /* Full width button on small screens */
+        width: 50%;
         padding: 1rem;
         text-align: center;
     }
@@ -137,20 +123,18 @@
 
 /*----------------===============================---------------------------*/
 
-
 .wcu-section {
     padding: 80px 20px;
     background-color: #ffffff;
     max-width: 1200px;
     margin: 0 auto;
-    overflow: hidden; /* Prevents animation overflow */
+    overflow: hidden;
 }
 
 .wcu-container {
     width: 100%;
 }
 
-/* --- Heading --- */
 .wcu-main-heading {
     text-align: center;
     font-size: 2.5rem;
@@ -159,7 +143,6 @@
     color: #222;
 }
 
-/* --- Layout Wrapper --- */
 .wcu-content-wrapper {
     display: flex;
     flex-direction: row;
@@ -167,7 +150,6 @@
     gap: 50px;
 }
 
-/* --- Left Column: Image --- */
 .wcu-image-column {
     flex: 1;
     position: relative;
@@ -185,18 +167,16 @@
     height: 100%;
     object-fit: cover;
     display: block;
-    min-height: 400px; /* Ensures height consistency */
+    min-height: 400px;
 }
 
-/* --- Right Column: Features Grid --- */
 .wcu-features-column {
     flex: 1;
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    grid-template-columns: repeat(2, 1fr);
     gap: 40px;
 }
 
-/* --- Feature Card Styling --- */
 .wcu-feature-card {
     display: flex;
     flex-direction: column;
@@ -209,7 +189,6 @@
     margin-bottom: 15px;
 }
 
-/* SVG Styling to match image (Gradient/Color feel) */
 .wcu-icon-wrapper svg {
     width: 100%;
     height: 100%;
@@ -229,9 +208,6 @@
     margin: 0;
 }
 
-/* --- Responsive Design --- */
-
-/* Tablet (Medium Screens) */
 @media (max-width: 992px) {
     .wcu-content-wrapper {
         flex-direction: column;
@@ -249,7 +225,6 @@
     }
 }
 
-/* Mobile (Small Screens) */
 @media (max-width: 600px) {
     .wcu-main-heading {
         font-size: 2rem;
@@ -257,7 +232,7 @@
     }
 
     .wcu-features-column {
-        grid-template-columns: 1fr; /* Stack features vertically */
+        grid-template-columns: 1fr;
         gap: 30px;
     }
 
@@ -267,27 +242,20 @@
     }
 }
 
-
-/*----------------===================================---------------------------*/
-/* =========================================
-   About Us Section (Matches Reference Image)
-   ========================================= */
+/*----------------===================================================---------------------------*/
 
 #au-about-section.au-section-wrapper {
     position: relative;
     width: 100%;
-    min-height: 600px; /* Adjust height as needed */
+    min-height: 600px;
     display: flex;
-    align-items: center; /* Vertically center content */
-    justify-content: flex-end; /* Align card to the right on desktop */
-    
-    /* Background Image setup */
+    align-items: center;
+    justify-content: flex-end;
     background-image: url('images/Index_AboutUs.webp'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    
-    padding: 50px 10%; /* Increased side padding to push card slightly inward */
+    padding: 50px 10%;
     box-sizing: border-box;
     overflow: hidden;
 }
@@ -297,61 +265,51 @@
     width: 100%;
     margin: 0 auto;
     display: flex;
-    justify-content: flex-end; /* Pushes card to right inside container */
+    justify-content: flex-end;
 }
 
-/* --- The Glass Card (Updated for higher opacity) --- */
 .au-content-card {
-    /* High opacity white (0.85) to match the solid look in the image */
     background: rgba(255, 255, 255, 0.80); 
-    /* backdrop-filter: blur(12px); Stronger blur for the frosted effect */
-    -webkit-backdrop-filter: blur(12px); /* Safari support */
-    
+    -webkit-backdrop-filter: blur(12px);
     padding: 50px 40px;
     border-radius: 20px;
-    max-width: 450px; /* Slightly narrower to match image proportions */
+    max-width: 450px;
     width: 100%;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.15); /* Soft, deep shadow */
-    
-    opacity: 0; /* Hidden initially for animation */
-    transform: translateY(30px); /* Positioned down initially for animation */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    opacity: 0;
+    transform: translateY(30px);
 }
 
-/* --- Typography --- */
 .au-heading {
-    font-family: var(--au-font-family, sans-serif); /* Fallback to sans-serif */
+    font-family: var(--au-font-family, sans-serif);
     font-size: 2.2rem;
-    color: #1a1a1a; /* Sharp black */
+    color: #1a1a1a;
     margin-bottom: 20px;
     font-weight: 700;
-    text-align: center; /* Heading is centered */
+    text-align: center;
 }
 
 .au-text {
     font-family: var(--au-font-family, sans-serif);
     font-size: 1rem;
     line-height: 1.6;
-    color: #333333; /* Dark grey for readability */
+    color: #333333;
     margin-bottom: 35px;
-    text-align: left; /* Paragraph text is left-aligned in the image */
+    text-align: left;
 }
 
-/* --- Button Styling --- */
 .au-btn-wrapper {
     width: 100%;
-    text-align: center; /* Centers the button inside the card */
+    text-align: center;
 }
 
 .au-read-more-btn {
     display: inline-block;
     text-decoration: none;
     font-family: var(--au-font-family, sans-serif);
-    
-    /* Muted Pink/Red colors from the image */
     color: #9c4b4b; 
-    background-color: rgba(156, 75, 75, 0.08); /* Very light tinted background */
-    border: 1px solid #dcaaaa; /* Soft pink border */
-    
+    background-color: rgba(156, 75, 75, 0.08);
+    border: 1px solid #dcaaaa;
     padding: 12px 35px;
     border-radius: 8px;
     font-size: 1rem;
@@ -367,12 +325,9 @@
     box-shadow: 0 5px 15px rgba(156, 75, 75, 0.25);
 }
 
-/* --- Responsive Design --- */
-
-/* Tablet & Mobile */
 @media screen and (max-width: 992px) {
     #au-about-section.au-section-wrapper {
-        justify-content: center; /* Center content */
+        justify-content: center;
         align-items: center;
         padding: 50px 5%;
     }
@@ -382,17 +337,16 @@
     }
 
     .au-content-card {
-        max-width: 90%; /* Take up more space on smaller screens */
+        max-width: 90%;
         padding: 40px 30px;
-        text-align: center; /* Center text on mobile usually looks better */
+        text-align: center;
     }
     
     .au-text {
-        text-align: center; /* Force center alignment on mobile */
+        text-align: center;
     }
 }
 
-/* Small Mobile */
 @media screen and (max-width: 480px) {
     .au-heading {
         font-size: 1.8rem;
@@ -410,8 +364,6 @@
 
 /*---------------------------===================================------------------*/
 /* Services Section */
-/* Container for centering content */
-/* --- Variables --- */
 :root {
     --srv-font: 'Poppins', sans-serif;
     --srv-bg-light: #fcfcfc;
@@ -422,12 +374,11 @@
     --srv-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
-/* --- Section Layout --- */
 #srv-services-section {
     padding: 80px 20px;
     background-color: var(--srv-bg-light);
     font-family: var(--srv-font);
-    overflow: hidden; /* Essential for mobile slider */
+    overflow: hidden;
 }
 
 .srv-container {
@@ -447,19 +398,18 @@
     color: var(--srv-text-dark);
 }
 
-/* --- The Track: Desktop (Grid) vs Mobile (Flex) --- */
 .srv-carousel-wrapper {
     position: relative;
 }
 
+/* Default Desktop Grid (3 Columns) */
 .srv-track {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 Columns Desktop */
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     width: 100%;
 }
 
-/* --- Card Design (The New Look) --- */
 .srv-card {
     background: var(--srv-card-bg);
     border-radius: 20px;
@@ -469,11 +419,10 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    height: 100%; /* Equal height */
+    height: 100%;
     box-sizing: border-box;
 }
 
-/* Hover only on Desktop to prevent stuck hover states on touch */
 @media (min-width: 993px) {
     .srv-card:hover {
         transform: translateY(-10px);
@@ -528,23 +477,19 @@
     opacity: 0.9;
 }
 
-/* --- Navigation & Dots (Hidden by default for Desktop) --- */
 .srv-carousel-btn, .srv-carousel-dots {
     display: none;
 }
 
 /* =========================================
-   MOBILE / TABLET MODE (< 992px)
-   Here we enforce the "Old Mode" functionality
+   MOBILE MODE (< 768px)
+   STRICT: Only apply flex/slider styles below 768px
 ========================================= */
-@media (max-width: 992px) {
-    
-    /* 1. Reset Grid to Flex for Carousel */
+@media (max-width: 767px) {
     .srv-track {
         display: flex;
         grid-template-columns: none;
         gap: 0;
-        /* Width is controlled by JS logic for sliding */
         width: 100%; 
         cursor: grab;
     }
@@ -553,17 +498,13 @@
         cursor: grabbing;
     }
 
-    /* 2. Sizing Cards for Slider */
     .srv-card {
-        /* On tablet: 2 cards (50%), On mobile: 1 card (100%) */
-        /* JS will help calculate widths, but we set basics here */
         flex-shrink: 0;
-        width: 100%; /* Fallback */
-        margin: 0; /* JS handles spacing */
+        width: 100%;
+        margin: 0;
         user-select: none;
     }
 
-    /* 3. Show Navigation Buttons */
     .srv-carousel-btn {
         display: flex;
         align-items: center;
@@ -585,7 +526,6 @@
     .srv-carousel-btn.prev { left: -10px; }
     .srv-carousel-btn.next { right: -10px; }
 
-    /* 4. Show Dots */
     .srv-carousel-dots {
         display: flex;
         justify-content: center;
@@ -603,44 +543,39 @@
     }
 
     .srv-dot.active {
-        background: #e55d87; /* Pink from gradient */
+        background: #e55d87;
         width: 25px;
         border-radius: 10px;
     }
-}/* Quick Connect Section */
-/* Add this to your CSS to control the container's width */
+}
+
+/* Quick Connect Section */
 .container-con {
   width: 100%;
-  max-width: 43rem; /* Adjust as needed */
+  max-width: 43rem;
   margin: 0 auto;
-  padding: 0 20px; /* Adds space on the sides for smaller screens */
+  padding: 0 20px;
   box-sizing: border-box;
 }
 
 .connect-section {
   display: flex;
-  justify-content: center; /* Horizontally center the content */
-  align-items: center;   /* Vertically center the content */
-  padding: 60px 0;     /* Padding on top/bottom, none on sides */
+  justify-content: center;
+  align-items: center;
+  padding: 60px 0;
   background-image: url('images/Index_ContactUs.webp');
-  background-size: cover; /* Changed back to cover for a full-bleed background */
+  background-size: cover;
   background-position: center;
   min-height: 700px;
-
-  /* --- KEY CHANGES --- */
-  /* margin property removed */
-  /* border-radius property removed */
 }
 
 .connect-form {
-  flex: 0 1 500px; /* Set a max-width for the form */
+  flex: 0 1 500px;
   background-color: #f8f9fa;
   border-radius: 24px;
   padding: 40px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
-
-/* All other styles for form inputs, buttons, etc. remain the same */
 
 .connect-form input,
 .connect-form select,
@@ -659,7 +594,7 @@
 .connect-form button {
   width: 100%;
   background-color: #ffffff;
-    background-image: linear-gradient(180deg, #3766B8, #F34546);
+  background-image: linear-gradient(180deg, #3766B8, #F34546);
   color: white;
   border: none;
   padding: 15px;
@@ -673,23 +608,20 @@
   background-color: #65150E;
 }
 
-
-/* --- Responsive Tablet Styles --- */
 @media (max-width: 1024px) {
   .caption-container {
     max-width: 65%;
   }
 
   .service-card {
-    flex-basis: 48%; /* 2 cards per view */
+    flex-basis: 48%;
     margin-right: 2%;
   }
 }
 
-/* --- Responsive Mobile Styles --- */
 @media (max-width: 768px) {
   .hero-slider {
-    height: 60vh; /* Adjust height for mobile */
+    height: 60vh;
   }
 
   .caption-container {
@@ -718,16 +650,16 @@
   }
 
   .service-card {
-    flex-basis: 100%; /* 1 card per view */
+    flex-basis: 100%;
     margin-right: 15px;
   }
 
   .carousel-wrapper {
-      padding: 0 15px; /* Add padding to see the side card peeking */
+      padding: 0 15px;
   }
 
   .connect-section {
-    flex-direction: column-reverse; /* Form first on mobile */
+    flex-direction: column-reverse;
     gap: 30px;
   }
 
@@ -744,41 +676,32 @@
 }
 .clients-section {
     text-align: center;
-    overflow: hidden; /* Important for the slider effect */
+    overflow: hidden;
 }
 
 .section-title {
     font-size: 2.5rem;
-    color: #a53f3f; /* Color extracted from the image */
-    
+    color: #a53f3f;
     font-weight: bold;
 }
 
-/* ======== Logo Carousel Styling ======== */
 .logo-slider {
     position: relative;
     width: 100%;
     padding: 20px 0;
     background: white;
-    /* Creates a faded edge effect */
     -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,1) 10%, rgba(0,0,0,1) 90%, rgba(0,0,0,0));
     mask-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,1) 10%, rgba(0,0,0,1) 90%, rgba(0,0,0,0));
 }
 
 .logo-track {
     display: flex;
-    width: calc(250px * 10); /* (width of slide) * (number of slides) */
-    animation: scroll 30s linear infinite; /* Animation magic */
+    width: calc(250px * 10);
+    animation: scroll 30s linear infinite;
 }
 
-/* Pause animation on hover 
-.logo-slider:hover .logo-track {
-    animation-play-state: paused;
-}*/
-
 .slide1 {
-    width: 250px; /* Width of each slide item */
-   
+    width: 250px;
     flex-shrink: 0;
     display: flex;
     align-items: center;
@@ -793,57 +716,28 @@
 }
 
 .slide1 img:hover {
-    filter: grayscale(0%); /* Full color on hover */
-    transform: scale(1.1); /* Slightly enlarge on hover */
+    filter: grayscale(0%);
+    transform: scale(1.1);
 }
 
-/* ======== Keyframes for the Infinite Scroll ======== */
 @keyframes scroll {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(calc(-250px * 5)); /* (width of slide) * (number of original slides) */
-    }
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-250px * 5)); }
 }
 
-
-/* ======== Responsive Design ======== */
 @media (max-width: 768px) {
-    .section-title {
-        font-size: 2rem;
-    }
-
-    .logo-track {
-        animation-duration: 25s; /* Speed up animation on smaller screens */
-    }
-
-    .slide1 {
-        width: 200px;
-        
-    }
-
-    /* Adjust animation and track width for the new slide size */
-    .logo-track {
-        width: calc(200px * 10);
-    }
-
+    .section-title { font-size: 2rem; }
+    .logo-track { animation-duration: 25s; width: calc(200px * 10); }
+    .slide1 { width: 200px; }
     @keyframes scroll {
-        0% {
-            transform: translateX(0);
-        }
-        100% {
-            transform: translateX(calc(-200px * 5));
-        }
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-200px * 5)); }
     }
 }
 
-
-
 /* =================================== */
-/* Services Section           */
+/* Services Section (Other)            */
 /* =================================== */
-
 .container-services {
     max-width: 1200px;
     margin: auto;
@@ -886,13 +780,11 @@
     transition: transform 0.4s ease, box-shadow 0.4s ease;
     opacity: 0;
     transform: translateY(30px);
-    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .service-box-01 { background-image: url('img/signage work.webp'); animation: fadeInUp 0.6s 0.1s forwards; }
 .service-box-02 { background-image: url('img/StainlesSteelWorks.webp'); animation: fadeInUp 0.6s 0.3s forwards; }
 .service-box-03 { background-image: url('img/Water Proofing.webp'); animation: fadeInUp 0.6s 0.5s forwards; }
-
 
 .service-overlay {
     position: absolute;
@@ -916,23 +808,9 @@
     opacity: 1;
 }
 
-.service-number {
-    font-size: 1.2rem;
-    font-weight: bold;
-    opacity: 0.8;
-}
-
-.service-title {
-    font-size: 1.4rem;
-    font-weight: 700;
-    margin: 5px 0;
-    text-align: center;
-}
-
-.service-description {
-    font-size: 0.95rem;
-    line-height: 1.4;
-}
+.service-number { font-size: 1.2rem; font-weight: bold; opacity: 0.8; }
+.service-title { font-size: 1.4rem; font-weight: 700; margin: 5px 0; text-align: center; }
+.service-description { font-size: 0.95rem; line-height: 1.4; }
 
 .service-box:hover {
     transform: translateY(-5px) scale(1.02) !important;
@@ -943,11 +821,7 @@
     background: linear-gradient(to bottom right, rgba(163, 31, 20, 0.8), rgba(163, 31, 20, 0.8));
 }
 
-.explore-more-container {
-    text-align: center;
-    margin-top: 50px;
-}
-
+.explore-more-container { text-align: center; margin-top: 50px; }
 .explore-more-btn {
     display: inline-block;
     padding: 12px 30px;
@@ -970,10 +844,7 @@
     box-shadow: 0 8px 20px rgba(74, 144, 226, 0.6);
 }
 
-.explore-more-btn:active {
-    transform: translateY(1px);
-}
-
+.explore-more-btn:active { transform: translateY(1px); }
 .explore-more-btn::after {
     content: '';
     position: absolute;
@@ -986,115 +857,51 @@
     transition: all 0.3s;
 }
 
-.explore-more-btn:hover::after {
-    left: 110%;
-}
+.explore-more-btn:hover::after { left: 110%; }
 
 @keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
 @media (max-width: 768px) {
-    .services-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    .service-box {
-        height: 200px;
-        animation-delay: 0s !important;
-        animation-duration: 0.5s !important;
-    }
-    .services-title {
-        font-size: 2rem;
-    }
-    .services-subtitle {
-        font-size: 1rem;
-        padding: 0 10px;
-    }
-    .explore-more-container {
-        margin-top: 30px;
-    }
-    .explore-more-btn {
-        padding: 10px 25px;
-        font-size: 1rem;
-    }
+    .services-grid { grid-template-columns: 1fr; gap: 20px; }
+    .service-box { height: 200px; animation-delay: 0s !important; animation-duration: 0.5s !important; }
+    .services-title { font-size: 2rem; }
+    .services-subtitle { font-size: 1rem; padding: 0 10px; }
+    .explore-more-container { margin-top: 30px; }
+    .explore-more-btn { padding: 10px 25px; font-size: 1rem; }
 }
 
 @media (max-width: 480px) {
-    .service-card-number {
-        top: 15px;
-        right: 15px;
-        font-size: 1.2rem;
-    }
-    .service-card-title {
-        font-size: 1.2rem;
-    }
+    .service-card-number { top: 15px; right: 15px; font-size: 1.2rem; }
+    .service-card-title { font-size: 1.2rem; }
 }
+
 /* ======== Quote Section ======== */
-.quote-section {
-    
-    text-align: center;
-    width: 100%;
-}
-
-.excellence-quote {
-    border: none;
-    margin: 0;
-}
-
+.quote-section { text-align: center; width: 100%; }
+.excellence-quote { border: none; margin: 0; }
 .quote-text {
-    font-size: 3.5rem; /* Large font size for impact */
+    font-size: 3.5rem;
     font-family: "Lora", serif;
     font-style: italic;
-    color: #a53f3f; /* Reddish-brown color from the image */
+    color: #a53f3f;
     margin-bottom: 20px;
     margin-top: 20px;
     font-weight: 50;
     line-height: 1.4;
 }
-
-.excellence-quote footer {
-    font-size: 1.2rem;
-    color: #6c757d;
-    font-style: italic;
-}
-
-/* ======== Animation Styling (for script.js) ======== */
-/* Style for individual characters wrapped in spans by JS */
+.excellence-quote footer { font-size: 1.2rem; color: #6c757d; font-style: italic; }
 .quote-text span {
     display: inline-block;
     opacity: 0;
     transform: translateY(20px) scale(0.9);
     transition: opacity 0.4s ease, transform 0.4s ease;
 }
+.quote-text span.visible { opacity: 1; transform: translateY(0) scale(1); }
 
-/* Class added by JS to trigger the animation */
-.quote-text span.visible {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-}
-
-
-/* ======== Responsive Design ======== */
-@media (max-width: 768px) {
-    .quote-text {
-        font-size: 1.03rem; /* Adjust font size for tablets */
-    }
-}
-
+@media (max-width: 768px) { .quote-text { font-size: 1.03rem; } }
 @media (max-width: 480px) {
-    .quote-text {
-        font-size: 1.3rem; /* Adjust font size for mobile phones */
-    }
-
-    .excellence-quote footer {
-        font-size: 1rem;
-    }
+    .quote-text { font-size: 1.3rem; }
+    .excellence-quote footer { font-size: 1rem; }
 }
