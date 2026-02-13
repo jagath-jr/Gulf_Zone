@@ -26,7 +26,7 @@
     width: 100%;
     height: 300px;
     /* Placeholder for warehouse image */
-    background-image: url('images/AbotUs.webp'); 
+    background-image: url('../images/about-us.webp'); 
     background-size: cover;
     background-position: center;
     display: flex;

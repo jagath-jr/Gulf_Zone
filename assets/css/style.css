@@ -230,7 +230,7 @@ a {
         .footer-about .footer-logo {
             width: 10rem;
             height: 4rem;
-             background-image: url('titleImg.png');
+             background-image: url('../images/common/favicon.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
