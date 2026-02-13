@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let animationID = null;
 
         // Fetch Data
-        fetch('services-data.json')
+        fetch('assets/data/services.json')
             .then(res => res.json())
             .then(data => {
                 if (data.homeServices) {
@@ -373,7 +373,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!container) return;
         if (document.querySelector('#services-track')) return; 
 
-        fetch('services-data.json')
+        fetch('assets/data/services.json')
             .then(res => res.json())
             .then(data => {
                 if (data.servicesPage) {

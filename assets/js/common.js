@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
   // 1. Fetch the Header
-  fetch("header.html")
+  fetch("components/header.html")
     .then((response) => {
       if (!response.ok) throw new Error("Header file not found!");
       return response.text();
@@ -93,9 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Load footer dynamically with path resolution
     const loadFooter = async () => {
         try {
-            // Determine correct path based on current location
-            const isServicesPage = window.location.pathname.includes('/services/');
-            const footerPath = isServicesPage ? '../footer.html' : 'footer.html';
+            const footerPath = 'components/footer.html';
             
             console.log('Attempting to load footer from:', footerPath);
             
@@ -108,13 +106,12 @@ document.addEventListener("DOMContentLoaded", () => {
         } catch (err) {
             console.error('Error loading footer, using fallback:', err);
             // Fallback content if fetch fails
-            const isServicesPage = window.location.pathname.includes('/services/');
-            const basePath = isServicesPage ? '../' : './';
+            const basePath = './';
 
             footerContainer.innerHTML = `
                 <div class="footer-fallback" style="text-align: center; padding: 20px;">
                     <h4>QUICK LINKS</h4>
-                    <p><a href="${basePath}index.html">Home</a> | <a href="${basePath}services/services.html">Services</a></p>
+                    <p><a href="${basePath}index.html">Home</a> | <a href="${basePath}services.html">Services</a></p>
                     <h4>CONTACT US</h4>
                     <p>123 Tech Street, Thiruvananthapuram</p>
                     <p class="copyright">© ${new Date().getFullYear()} Duvitra. All rights reserved.</p>

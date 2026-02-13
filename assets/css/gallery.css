@@ -5,7 +5,7 @@ body{
 }
 /* Hero Banner */
 .hero {
-  background: url('Home-img/SPlumbing Works.webp') center/cover no-repeat;
+  background: url('../images/services/plumbing-materials.webp') center/cover no-repeat;
   text-align: center;
   padding: 100px 20px;
   color: #fff;
@@ -181,7 +181,7 @@ font-size: 4rem;
   width:100vw;
 }
 .services-hero {
-    background-image: url('Home-img/SPlumbing Works.webp');
+    background-image: url('../images/services/plumbing-materials.webp');
     background-size: cover;
     background-position: center;
     height: 80vh;
