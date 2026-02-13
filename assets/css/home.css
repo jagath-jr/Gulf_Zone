@@ -640,6 +640,43 @@
   background-color: #65150E;
 }
 
+
+.connect-section.qc-animate-ready .connect-form {
+  opacity: 0;
+  transform: translateY(45px) scale(0.98);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.connect-section.qc-animate-ready .connect-form h2,
+.connect-section.qc-animate-ready .connect-form input,
+.connect-section.qc-animate-ready .connect-form select,
+.connect-section.qc-animate-ready .connect-form textarea,
+.connect-section.qc-animate-ready .connect-form button {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.connect-section.qc-animate-ready.qc-visible .connect-form {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.connect-section.qc-animate-ready.qc-visible .connect-form h2,
+.connect-section.qc-animate-ready.qc-visible .connect-form input,
+.connect-section.qc-animate-ready.qc-visible .connect-form select,
+.connect-section.qc-animate-ready.qc-visible .connect-form textarea,
+.connect-section.qc-animate-ready.qc-visible .connect-form button {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.connect-section.qc-animate-ready.qc-visible .connect-form :is(input, select, textarea):nth-of-type(2) { transition-delay: 0.07s; }
+.connect-section.qc-animate-ready.qc-visible .connect-form :is(input, select, textarea):nth-of-type(3) { transition-delay: 0.14s; }
+.connect-section.qc-animate-ready.qc-visible .connect-form :is(input, select, textarea):nth-of-type(4) { transition-delay: 0.21s; }
+.connect-section.qc-animate-ready.qc-visible .connect-form :is(input, select, textarea):nth-of-type(5) { transition-delay: 0.28s; }
+.connect-section.qc-animate-ready.qc-visible .connect-form button { transition-delay: 0.35s; }
+
 @media (max-width: 1024px) {
   .caption-container {
     max-width: 65%;

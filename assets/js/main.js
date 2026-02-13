@@ -129,8 +129,61 @@ document.addEventListener("DOMContentLoaded", () => {
         observer.observe(section);
     }
 
+
+
     /* ==========================================================================
-       5. HOME PAGE SERVICES (Reads "homeServices" from JSON)
+       5. QUICK CONNECT ANIMATION
+       ========================================================================== */
+    function initQuickConnect() {
+        const section = document.querySelector('.connect-section');
+        const form = document.querySelector('.connect-form');
+        if (!section || !form) return;
+
+        const fields = form.querySelectorAll('h2, input, select, textarea, button');
+
+        if (hasGSAP && typeof ScrollTrigger !== 'undefined') {
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: section,
+                    start: 'top 80%',
+                    toggleActions: 'play none none none'
+                }
+            });
+
+            tl.from(form, {
+                y: 48,
+                opacity: 0,
+                duration: 0.9,
+                ease: 'power3.out'
+            })
+            .from(fields, {
+                y: 20,
+                opacity: 0,
+                duration: 0.5,
+                stagger: 0.08,
+                ease: 'power2.out'
+            }, '-=0.45');
+
+            return;
+        }
+
+        section.classList.add('qc-animate-ready');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+
+                section.classList.add('qc-visible');
+                observer.unobserve(entry.target);
+            });
+        }, { threshold: 0.2 });
+
+        observer.observe(section);
+    }
+
+
+    /* ==========================================================================
+       6. HOME PAGE SERVICES (Reads "homeServices" from JSON)
        ========================================================================== */
     function initHomeServices() {
         const track = document.querySelector('#services-track');
@@ -527,7 +580,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* ==========================================================================
-       8. QUOTE ANIMATION
+       9. QUOTE ANIMATION
        ========================================================================== */
     function initQuote() {
         const quoteTextElement = document.querySelector('.quote-text');
@@ -564,7 +617,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* ==========================================================================
-       9. LEGACY SCROLL
+       10. LEGACY SCROLL
        ========================================================================== */
     function initLegacyScroll() {
         const boxes = document.querySelectorAll('.service-box');
@@ -583,7 +636,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* ==========================================================================
-       10. ABOUT PAGE CONTENT
+       11. ABOUT PAGE CONTENT
        ========================================================================== */
     function initAboutPageContent() {
         if (!hasGSAP || !document.querySelector('#about-hero')) return;
@@ -628,6 +681,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initHero();
     initAbout();
     initWhyChooseUs();
+    initQuickConnect();
     initHomeServices();
     initServicesPage();
     initTestimonials();
