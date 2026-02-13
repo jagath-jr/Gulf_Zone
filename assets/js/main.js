@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: section,
-                    start: 'top 80%',
+                    start: 'top 92%',
                     toggleActions: 'play none none none'
                 }
             });
@@ -176,7 +176,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 section.classList.add('qc-visible');
                 observer.unobserve(entry.target);
             });
-        }, { threshold: 0.2 });
+        }, {
+            threshold: 0.35,
+            rootMargin: '0px 0px -10% 0px'
+        });
 
         observer.observe(section);
     }
