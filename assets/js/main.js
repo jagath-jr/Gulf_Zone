@@ -73,7 +73,64 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* ==========================================================================
-       4. HOME PAGE SERVICES (Reads "homeServices" from JSON)
+       4. WHY CHOOSE US ANIMATION
+       ========================================================================== */
+    function initWhyChooseUs() {
+        const section = document.querySelector('#why-choose-us');
+        if (!section) return;
+
+        const heading = section.querySelector('.wcu-main-heading');
+        const imageFrame = section.querySelector('.wcu-image-frame');
+        const featureCards = section.querySelectorAll('.wcu-feature-card');
+
+        if (hasGSAP && typeof ScrollTrigger !== 'undefined') {
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: section,
+                    start: 'top 78%',
+                    toggleActions: 'play none none none'
+                }
+            });
+
+            tl.from(heading, {
+                y: 30,
+                opacity: 0,
+                duration: 0.6,
+                ease: 'power2.out'
+            })
+            .from(imageFrame, {
+                x: -45,
+                opacity: 0,
+                duration: 0.8,
+                ease: 'power3.out'
+            }, '-=0.2')
+            .from(featureCards, {
+                y: 28,
+                opacity: 0,
+                duration: 0.55,
+                stagger: 0.12,
+                ease: 'back.out(1.3)'
+            }, '-=0.45');
+
+            return;
+        }
+
+        section.classList.add('wcu-animate-ready');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+
+                section.classList.add('wcu-visible');
+                observer.unobserve(entry.target);
+            });
+        }, { threshold: 0.2 });
+
+        observer.observe(section);
+    }
+
+    /* ==========================================================================
+       5. HOME PAGE SERVICES (Reads "homeServices" from JSON)
        ========================================================================== */
     function initHomeServices() {
         const track = document.querySelector('#services-track');
@@ -470,7 +527,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* ==========================================================================
-       7. QUOTE ANIMATION
+       8. QUOTE ANIMATION
        ========================================================================== */
     function initQuote() {
         const quoteTextElement = document.querySelector('.quote-text');
@@ -507,7 +564,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* ==========================================================================
-       8. LEGACY SCROLL
+       9. LEGACY SCROLL
        ========================================================================== */
     function initLegacyScroll() {
         const boxes = document.querySelectorAll('.service-box');
@@ -526,7 +583,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* ==========================================================================
-       9. ABOUT PAGE CONTENT
+       10. ABOUT PAGE CONTENT
        ========================================================================== */
     function initAboutPageContent() {
         if (!hasGSAP || !document.querySelector('#about-hero')) return;
@@ -570,6 +627,7 @@ document.addEventListener("DOMContentLoaded", () => {
        ========================================================================== */
     initHero();
     initAbout();
+    initWhyChooseUs();
     initHomeServices();
     initServicesPage();
     initTestimonials();
